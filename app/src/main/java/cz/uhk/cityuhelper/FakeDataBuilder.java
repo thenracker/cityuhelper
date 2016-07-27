@@ -12,7 +12,8 @@ public class FakeDataBuilder {
     public ArrayList<Delivery> getListOfFakeDelivers(){
         ArrayList<Delivery> deliveries = new ArrayList<>();
 
-        deliveries.add(new Delivery("id","name"));
+        //Author peter = new Author();
+        //deliveries.add(new Delivery());
 
         //here i will put some code
 

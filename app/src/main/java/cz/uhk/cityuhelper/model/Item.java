@@ -21,7 +21,9 @@ public class Item implements IItem, Serializable {
 
     public Item(String title, Author author, LatLng position){
         this.id = FAKE_ID; //TODO - sometimes it should change
-
+        this.title = title;
+        this.author = author;
+        this.position = position;
     }
 
 

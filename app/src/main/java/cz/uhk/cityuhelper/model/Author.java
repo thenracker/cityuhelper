@@ -17,7 +17,13 @@ public class Author implements Serializable {
     private String description;
     private String telephone;
 
-
+    public Author(String name, String surname, String email, String description, String telephone){
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.description = description;
+        this.telephone = telephone;
+    }
 
     //GETTERS & SETTERS
     public String getId() {
