@@ -12,11 +12,11 @@ public class Item implements IItem, Serializable {
     //ID is here for future reasons
     public final String FAKE_ID = "fakeIdXY";
 
-    private String id;
-    private String title;
-    private Author author;
-    private Type type;
-    private LatLng position;
+    protected String id;
+    protected String title;
+    protected Author author;
+    protected Type type;
+    protected LatLng position;
 
     public enum Type{
         DELIVER,
