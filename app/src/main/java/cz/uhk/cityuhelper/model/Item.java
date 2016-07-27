@@ -18,6 +18,13 @@ public class Item implements IItem, Serializable {
     protected Type type;
     protected LatLng position;
 
+
+    public Item(String title, Author author, LatLng position){
+        this.id = FAKE_ID; //TODO - sometimes it should change
+
+    }
+
+
     public enum Type{
         DELIVER,
         PRINT,
