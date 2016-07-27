@@ -5,7 +5,5 @@ package cz.uhk.cityuhelper.model;
  */
 public class Delivery extends Item {
 
-    public Delivery (String id, String name){
-        this.id = id;
-    }
+
 }
