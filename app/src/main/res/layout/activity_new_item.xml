@@ -29,6 +29,8 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Type:"
+
+            android:textColor="@color/colorPrimaryDark"
             android:id="@+id/TypeTextView" />
 
         <Spinner
@@ -42,6 +44,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Name:"
+                android:layout_marginTop="8dp"
                 android:id="@+id/NameTextView"
                 android:textColor="@color/colorPrimaryDark"/>
 
@@ -58,6 +61,8 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Subject:"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/colorPrimaryDark"
                 android:id="@+id/SubjectTextView" />
 
             <EditText
@@ -70,6 +75,8 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Files:"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/colorPrimaryDark"
                 android:id="@+id/FileTextView" />
 
             <LinearLayout
@@ -102,6 +109,8 @@
                     android:layout_height="match_parent"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="Color:  "
+                    android:layout_marginTop="8dp"
+                    android:textColor="@color/colorPrimaryDark"
                     android:paddingTop="8dp"
                     android:layout_gravity="bottom"
                     android:id="@+id/ColorTextView" />
@@ -123,6 +132,8 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Description:"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/colorPrimaryDark"
                 android:id="@+id/DescripTextView" />
 
             <EditText
@@ -138,6 +149,8 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Mobile Phone:"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/colorPrimaryDark"
                 android:id="@+id/MobliePhoneTextView" />
 
             <EditText
@@ -152,6 +165,8 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="E-mail:"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/colorPrimaryDark"
                 android:id="@+id/EmailTextView" />
 
             <EditText
@@ -166,6 +181,8 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Position:"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/colorPrimaryDark"
                 android:id="@+id/PositionTextView" />
 
             <LinearLayout
@@ -173,12 +190,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="Large Text"
-                    android:id="@+id/textView" />
+                    android:text="Your location"
+                    android:id="@+id/PositionEditView" />
 
                 <ImageButton
                     android:layout_width="wrap_content"
@@ -186,6 +204,17 @@
                     android:id="@+id/imageButton2"
                     android:src="@drawable/locationsearching"/>
             </LinearLayout>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SEND"
+                android:textSize="36sp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_marginTop="16dp"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/SendButton" />
 
         </LinearLayout>
 
