@@ -19,18 +19,21 @@ public class Item implements IItem, Serializable {
     protected LatLng position;
 
 
-    public Item(String title, Author author, LatLng position){
+    public Item(Type type, String title, Author author, LatLng position){
         this.id = FAKE_ID; //TODO - sometimes it should change
         this.title = title;
         this.author = author;
         this.position = position;
+        this.type = type;
     }
 
     public enum Type{
 
         DELIVER("Delivery"),
         PRINT("Print"),
-        FOOD("Food");
+        FOOD("Food"),
+        NEED("Need"),
+        QUESTION("Question");
 
         private String toString;
 

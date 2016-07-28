@@ -52,7 +52,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPersonName"
-                    android:id="@+id/NameEditName"
+                    android:id="@+id/editNameSurname"
                     android:hint="Your name"/>
 
             </android.support.design.widget.TextInputLayout>
@@ -67,7 +67,7 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/SubjectEditView"
+                    android:id="@+id/editSubject"
                     android:hint="Subject"/>
 
             </android.support.design.widget.TextInputLayout>
@@ -81,7 +81,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textMultiLine"
-                    android:id="@+id/DescripEditView"
+                    android:id="@+id/editDescription"
                     android:hint="Description"
                     android:phoneNumber="false" />
 
@@ -97,7 +97,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="phone"
                     android:hint="Phone number"
-                    android:id="@+id/PhoneEditView" />
+                    android:id="@+id/editPhone" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -111,7 +111,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="textEmailAddress"
                     android:hint="Your email"
-                    android:id="@+id/EmailEditView" />
+                    android:id="@+id/editEmail" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -133,7 +133,8 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:id="@+id/FilePathEditView"
+                    android:editable="false"
+                    android:id="@+id/editFilePath"
                     android:layout_marginLeft="10dp" />
 
                 <ImageButton
@@ -201,7 +202,7 @@
                 android:paddingLeft="20dp"
                 android:textSize="16sp"
                 android:layout_gravity="center_horizontal"
-                android:id="@+id/SendButton" />
+                android:id="@+id/btnSend" />
 
         </LinearLayout>
 

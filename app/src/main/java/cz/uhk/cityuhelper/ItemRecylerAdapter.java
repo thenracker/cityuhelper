@@ -1,6 +1,7 @@
 package cz.uhk.cityuhelper;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,10 +12,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import cz.uhk.cityuhelper.model.Delivery;
-import cz.uhk.cityuhelper.model.Food;
 import cz.uhk.cityuhelper.model.Item;
-import cz.uhk.cityuhelper.model.Print;
 
 /**
  * Created by petrw on 12.07.2016.
@@ -76,23 +74,26 @@ public class ItemRecylerAdapter extends RecyclerView.Adapter<ItemRecylerAdapter.
             txtItemAuthor.setText(feedItem.getAuthor().getName()+" "+feedItem.getAuthor().getSurname());
             txtItemLocation.setText("GPS: "+feedItem.getPosition().latitude+", "+feedItem.getPosition().longitude);
 
-            if(feedItem instanceof Delivery){
+            if(feedItem.getType() == Item.Type.DELIVER){
                 imgItemIcon.setImageDrawable(ContextCompat.getDrawable(mContext,R.drawable.ic_business_center_black_48dp));
-            }else if (feedItem instanceof Food){
+            }else if (feedItem.getType() == Item.Type.FOOD){
                 imgItemIcon.setImageDrawable(ContextCompat.getDrawable(mContext,R.drawable.ic_restaurant_black_48dp));
-            }else if (feedItem instanceof Print){
+            }else if (feedItem.getType() == Item.Type.PRINT){
                 imgItemIcon.setImageDrawable(ContextCompat.getDrawable(mContext,R.drawable.ic_local_printshop_black_48dp));
+            }else if (feedItem.getType() == Item.Type.QUESTION){
+                imgItemIcon.setImageDrawable(ContextCompat.getDrawable(mContext,R.drawable.ic_notifications_active_black_48dp));
+            }else if (feedItem.getType() == Item.Type.NEED){
+                imgItemIcon.setImageDrawable(ContextCompat.getDrawable(mContext,R.drawable.ic_help_black_48dp));
             }
         }
 
         @Override
         public void onClick(View view) {
-            //Intent myIntent = new Intent(mContext, DetailActivity.class);
-            /*
-            myIntent.putExtra("id", item.getMarkerId());
-            myIntent.putExtra("groupid", item.getGroupId());
+
+            Intent myIntent = new Intent(mContext, DetailActivity.class);
+            myIntent.putExtra("name", feedItemList.get(getLayoutPosition()).getAuthor().getSurname());
             mContext.startActivity(myIntent);
-            */
+
         }
 
     }
