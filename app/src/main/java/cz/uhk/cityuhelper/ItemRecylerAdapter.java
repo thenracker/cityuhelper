@@ -1,6 +1,7 @@
 package cz.uhk.cityuhelper;
 
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import cz.uhk.cityuhelper.model.Delivery;
 import cz.uhk.cityuhelper.model.Item;
 
 /**
@@ -72,11 +74,9 @@ public class ItemRecylerAdapter extends RecyclerView.Adapter<ItemRecylerAdapter.
             txtItemAuthor.setText(feedItem.getAuthor().getName()+" "+feedItem.getAuthor().getSurname());
             txtItemLocation.setText("GPS: "+feedItem.getPosition().latitude+", "+feedItem.getPosition().longitude);
 
-
-            /*
             if(feedItem instanceof Delivery){
                 imgItemIcon.setImageDrawable(ContextCompat.getDrawable(mContext,R.drawable.ic_cast_disabled_light));
-            }*/
+            }
         }
 
         @Override
