@@ -12,7 +12,9 @@ import android.widget.TextView;
 import java.util.List;
 
 import cz.uhk.cityuhelper.model.Delivery;
+import cz.uhk.cityuhelper.model.Food;
 import cz.uhk.cityuhelper.model.Item;
+import cz.uhk.cityuhelper.model.Print;
 
 /**
  * Created by petrw on 12.07.2016.
@@ -75,7 +77,11 @@ public class ItemRecylerAdapter extends RecyclerView.Adapter<ItemRecylerAdapter.
             txtItemLocation.setText("GPS: "+feedItem.getPosition().latitude+", "+feedItem.getPosition().longitude);
 
             if(feedItem instanceof Delivery){
-                imgItemIcon.setImageDrawable(ContextCompat.getDrawable(mContext,R.drawable.ic_cast_disabled_light));
+                imgItemIcon.setImageDrawable(ContextCompat.getDrawable(mContext,R.drawable.ic_business_center_black_48dp));
+            }else if (feedItem instanceof Food){
+                imgItemIcon.setImageDrawable(ContextCompat.getDrawable(mContext,R.drawable.ic_restaurant_black_48dp));
+            }else if (feedItem instanceof Print){
+                imgItemIcon.setImageDrawable(ContextCompat.getDrawable(mContext,R.drawable.ic_local_printshop_black_48dp));
             }
         }
 

@@ -26,11 +26,22 @@ public class Item implements IItem, Serializable {
         this.position = position;
     }
 
-
     public enum Type{
-        DELIVER,
-        PRINT,
-        FOOD
+
+        DELIVER("Delivery"),
+        PRINT("Print"),
+        FOOD("Food");
+
+        private String toString;
+
+        Type(String toString){
+            this.toString = toString;
+        }
+
+        @Override
+        public String toString(){
+            return toString;
+        }
     }
 
     //GETTERS & SETTERS
