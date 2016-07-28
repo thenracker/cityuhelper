@@ -1,21 +1,22 @@
 package cz.uhk.cityuhelper;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
-import cz.uhk.cityuhelper.model.MapActivity;
+import java.util.ArrayList;
+
+import cz.uhk.cityuhelper.model.Item;
 
 public class MainActivity extends AppCompatActivity {
 
-    private void startMapActivity(){
-
-    }
+    //private ArrayAdapter<Item>
+    private RecyclerView recyclerView;
+    private ArrayList<Item> items;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,17 +29,19 @@ public class MainActivity extends AppCompatActivity {
         Delivery d = new Delivery();
         d.setType(Item.Type.DELIVER);
         */
+        items = FakeDataBuilder.getListOfFakeDelivers();
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+        llm.setOrientation(LinearLayoutManager.VERTICAL);
 
-                Intent map = new Intent(MainActivity.this, MapActivity.class);
-                startActivity(map);
+        recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(llm);
+        recyclerView.setAdapter(new ItemRecylerAdapter(items,this));
 
-            }
-        });
+        /*
+            Intent map = new Intent(MainActivity.this, MapActivity.class);
+            startActivity(map);
+         */
     }
 
     @Override
