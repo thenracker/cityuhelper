@@ -29,55 +29,98 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Type:"
-
-            android:textColor="@color/colorPrimaryDark"
-            android:id="@+id/TypeTextView" />
+            android:id="@+id/TypeTextView"
+            android:textSize="15dp"
+            android:layout_marginLeft="10dp" />
 
         <Spinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/spinner"
-            android:entries="@array/type" />
+            android:entries="@array/type"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Name:"
-                android:layout_marginTop="8dp"
-                android:id="@+id/NameTextView"
-                android:textColor="@color/colorPrimaryDark"/>
 
-            <EditText
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName"
-                android:text="Name"
-                android:ems="10"
-                android:id="@+id/NameEditName" />
+                android:layout_margin="10dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Subject:"
-                android:layout_marginTop="8dp"
-                android:textColor="@color/colorPrimaryDark"
-                android:id="@+id/SubjectTextView" />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:id="@+id/NameEditName"
+                    android:hint="Your name"/>
 
-            <EditText
+            </android.support.design.widget.TextInputLayout>
+
+
+
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/SubjectEditView" />
+                android:layout_margin="10dp">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/SubjectEditView"
+                    android:hint="Subject"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:id="@+id/DescripEditView"
+                    android:hint="Description"
+                    android:phoneNumber="false" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="phone"
+                    android:hint="Phone number"
+                    android:id="@+id/PhoneEditView" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:hint="Your email"
+                    android:id="@+id/EmailEditView" />
+
+            </android.support.design.widget.TextInputLayout>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Files:"
-                android:layout_marginTop="8dp"
-                android:textColor="@color/colorPrimaryDark"
-                android:id="@+id/FileTextView" />
+                android:id="@+id/FileTextView"
+                android:layout_marginLeft="10dp" />
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -89,7 +132,8 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:id="@+id/FilePathEditView" />
+                    android:id="@+id/FilePathEditView"
+                    android:layout_marginLeft="10dp" />
 
                 <ImageButton
                     android:layout_width="wrap_content"
@@ -109,11 +153,10 @@
                     android:layout_height="match_parent"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="Color:  "
-                    android:layout_marginTop="8dp"
-                    android:textColor="@color/colorPrimaryDark"
                     android:paddingTop="8dp"
                     android:layout_gravity="bottom"
-                    android:id="@+id/ColorTextView" />
+                    android:id="@+id/ColorTextView"
+                    android:layout_marginLeft="10dp" />
 
                 <ToggleButton
                     android:layout_width="wrap_content"
@@ -127,76 +170,18 @@
 
             </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Description:"
-                android:layout_marginTop="8dp"
-                android:textColor="@color/colorPrimaryDark"
-                android:id="@+id/DescripTextView" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textMultiLine"
-                android:ems="10"
-                android:id="@+id/DescripEditView"
-                android:phoneNumber="false" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Mobile Phone:"
-                android:layout_marginTop="8dp"
-                android:textColor="@color/colorPrimaryDark"
-                android:id="@+id/MobliePhoneTextView" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="phone"
-                android:ems="10"
-                android:id="@+id/PhoneEditView" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="E-mail:"
-                android:layout_marginTop="8dp"
-                android:textColor="@color/colorPrimaryDark"
-                android:id="@+id/EmailTextView" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
-                android:ems="10"
-                android:id="@+id/EmailEditView" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Position:"
-                android:layout_marginTop="8dp"
-                android:textColor="@color/colorPrimaryDark"
-                android:id="@+id/PositionTextView" />
-
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <EditText
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="Your location"
-                    android:id="@+id/PositionEditView" />
+                    android:text="Large Text"
+                    android:id="@+id/textView"
+                    android:layout_marginLeft="10dp" />
 
                 <ImageButton
                     android:layout_width="wrap_content"
@@ -204,17 +189,6 @@
                     android:id="@+id/imageButton2"
                     android:src="@drawable/locationsearching"/>
             </LinearLayout>
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="SEND"
-                android:textSize="36sp"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
-                android:layout_marginTop="16dp"
-                android:layout_gravity="center_horizontal"
-                android:id="@+id/SendButton" />
 
         </LinearLayout>
 

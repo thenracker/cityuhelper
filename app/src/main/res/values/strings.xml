@@ -1,10 +1,16 @@
 <resources>
+
     <string name="app_name">CityU Helper</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_addItem">Add Item</string>
+
     <string name="title_activity_map">Map</string>
+    <string name="title_activity_detail">Detail</string>
+    <string name="title_activity_newItem">New Item</string>
+
     <string-array name="type">
         <item>Delivery</item>
         <item>Print</item>
         <item>Food</item>
     </string-array>
+
 </resources>
