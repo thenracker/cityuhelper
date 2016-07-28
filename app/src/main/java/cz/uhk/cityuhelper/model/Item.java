@@ -3,6 +3,7 @@ package cz.uhk.cityuhelper.model;
 import com.google.android.gms.maps.model.LatLng;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 /**
  * Created by petrw on 25.07.2016.
@@ -14,14 +15,16 @@ public class Item implements IItem, Serializable {
 
     protected String id;
     protected String title;
+    private String description;
     protected Author author;
     protected Type type;
     protected LatLng position;
 
 
-    public Item(Type type, String title, Author author, LatLng position){
-        this.id = FAKE_ID; //TODO - sometimes it should change
+    public Item(Type type, String title, String description, Author author, LatLng position){
+        this.id = UUID.randomUUID().toString(); //TODO add testing if it exists??
         this.title = title;
+        this.description = description;
         this.author = author;
         this.position = position;
         this.type = type;

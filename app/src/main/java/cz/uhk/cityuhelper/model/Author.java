@@ -14,14 +14,18 @@ public class Author implements Serializable {
     private String surname;
     @NonNull
     private String email;
-    private String description;
     private String telephone;
 
-    public Author(String name, String surname, String email, String description, String telephone){
+    public Author(String name, String surname, String email, String telephone){
         this.name = name;
         this.surname = surname;
         this.email = email;
-        this.description = description;
+        this.telephone = telephone;
+    }
+    public Author(String name, String email, String telephone){
+        this.name = name;
+        this.surname = "";
+        this.email = email;
         this.telephone = telephone;
     }
 
@@ -58,11 +62,4 @@ public class Author implements Serializable {
         this.email = email;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
 }
