@@ -10,7 +10,7 @@ public class Item implements IItem, Serializable {
 
     protected String id;
     protected String title;
-    private String description;
+    protected String description;
     protected Author author;
     protected Type type;
     protected MyLatLng position;
@@ -60,6 +60,14 @@ public class Item implements IItem, Serializable {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Author getAuthor() {

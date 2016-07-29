@@ -13,10 +13,10 @@ public class FakeDataBuilder {
         ArrayList<Item> deliveries = new ArrayList<>();
 
         //FAKE DATA
-        Author peter = new Author("Petr","Weissar","weisspe1@uhk.cz","725791445");
-        Author vladimir = new Author("Vladimir","Maliniak", "malinvl1@uhk.cz","7879445");
-        Author kai = new Author("Kai","Xie","kai@kai.chi","6518789");
-        Author jarrett = new Author("Jiarong","Zhu","jarret@uhk.chi","6578132");
+        Author peter = new Author("Petr Weissar","weisspe1@uhk.cz","725791445");
+        Author vladimir = new Author("Vladimir Maliniak", "malinvl1@uhk.cz","7879445");
+        Author kai = new Author("Kai Xie","kai@kai.chi","6518789");
+        Author jarrett = new Author("Jiarong Zhu","jarret@uhk.chi","6578132");
 
         deliveries.add(new Item(Item.Type.NEED,"Make reservation table 11 because of I neeed to see what it would look like on many rows","Description of the action I need",peter, new MyLatLng(22.325412, 114.169088)));
         deliveries.add(new Item(Item.Type.DELIVER,"Amazon book takeof","Description of the action I need",vladimir, new MyLatLng(22.336306, 114.169087)));

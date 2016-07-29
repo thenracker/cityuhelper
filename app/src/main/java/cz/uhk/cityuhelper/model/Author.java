@@ -11,20 +11,12 @@ public class Author implements Serializable {
 
     private String id;
     private String name;
-    private String surname;
     @NonNull
     private String email;
     private String telephone;
 
-    public Author(String name, String surname, String email, String telephone){
-        this.name = name;
-        this.surname = surname;
-        this.email = email;
-        this.telephone = telephone;
-    }
     public Author(String name, String email, String telephone){
         this.name = name;
-        this.surname = "";
         this.email = email;
         this.telephone = telephone;
     }
@@ -46,14 +38,6 @@ public class Author implements Serializable {
         this.name = name;
     }
 
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -61,5 +45,9 @@ public class Author implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public String getTelephone(){return telephone;}
+
+    public void setTelephone(String telephone) {this.telephone =telephone;}
 
 }

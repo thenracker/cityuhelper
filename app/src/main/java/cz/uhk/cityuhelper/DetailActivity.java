@@ -21,6 +21,11 @@ public class DetailActivity extends AppCompatActivity {
         if(item != null){
             //TODO fill those components :)
             ((TextView)findViewById(R.id.txtDetailType)).setText(item.getType().toString());
+            ((TextView)findViewById(R.id.txtDetailName)).setText(item.getAuthor().getName().toString());
+            ((TextView)findViewById(R.id.txtDetailSubject)).setText(item.getTitle().toString());
+            ((TextView)findViewById(R.id.txtDetailDescription)).setText(item.getDescription().toString());
+            ((TextView)findViewById(R.id.txtDetailPhone)).setText(item.getAuthor().getTelephone().toString());
+            ((TextView)findViewById(R.id.txtDetailEmail)).setText(item.getAuthor().getEmail().toString());
 
             //.,.. HERE FILL THE TEXTS
 
