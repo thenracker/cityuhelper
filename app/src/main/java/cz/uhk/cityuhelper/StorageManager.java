@@ -1,0 +1,97 @@
+package cz.uhk.cityuhelper;
+
+import android.content.Context;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+
+import cz.uhk.cityuhelper.model.FakeDataBuilder;
+import cz.uhk.cityuhelper.model.Item;
+
+/**
+ * Created by petrw on 29.07.2016.
+ */
+public class StorageManager {
+
+    public static boolean itemsExists(Context context){
+        return new File(context.getExternalFilesDir(".data")+"/.items.dat").exists();
+    }
+
+    public static void saveObject(Context context, Item object){
+        //LOAD ALL
+        ArrayList<Item> objects = (ArrayList<Item>) loadArray(context);
+        //ADD NEW ONE
+        objects.add(object);
+        //SAVE ALL
+        saveArray(context,objects);
+    }
+
+    //SAVE
+    public static void saveArray(Context context, ArrayList<Item> list){
+        try{
+
+            File file = new File(context.getExternalFilesDir(".data")+"/.items.dat");
+
+            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file));
+
+            //save size First
+            oos.writeInt(list.size());
+
+            for(Object c : list){
+                oos.writeObject(c);
+                oos.flush();
+            }
+
+            oos.close();
+
+        }catch(FileNotFoundException e){
+
+        }catch(IOException ee){
+
+        }
+    }
+
+    //LOAD
+    public static ArrayList<Item> loadArray(Context context){
+
+        //FIRST INIT OF APP
+        if(!itemsExists(context)){
+            //we will create them from fake builder
+            saveArray(context, FakeDataBuilder.getListOfFakeDelivers());
+            //then we can finally load them and send them to activity :)
+        }
+
+        ArrayList<Item> array = new ArrayList<>();
+
+        try{
+
+            File file = new File(context.getExternalFilesDir(".data")+"/.items.dat");
+
+            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file));
+
+            int count = ois.readInt();
+
+            for(int i = 0; i < count; i++){
+                Item ii = (Item)ois.readObject();
+                array.add(ii);
+            }
+
+            ois.close();
+
+        }catch(FileNotFoundException e){
+
+        }catch(IOException ee){
+            ee.printStackTrace();
+        }catch(ClassNotFoundException eee){
+
+        }
+        return array;
+    }
+
+}

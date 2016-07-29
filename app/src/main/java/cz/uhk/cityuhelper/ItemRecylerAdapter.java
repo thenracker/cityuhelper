@@ -72,7 +72,8 @@ public class ItemRecylerAdapter extends RecyclerView.Adapter<ItemRecylerAdapter.
             //Setting text view title
             txtItemTitle.setText(feedItem.getTitle());
             txtItemAuthor.setText(feedItem.getAuthor().getName()+" "+feedItem.getAuthor().getSurname());
-            txtItemLocation.setText("GPS: "+feedItem.getPosition().latitude+", "+feedItem.getPosition().longitude);
+            if(feedItem.getPosition() != null)
+                txtItemLocation.setText("GPS: "+feedItem.getPosition().latitude+", "+feedItem.getPosition().longitude);
 
             if(feedItem.getType() == Item.Type.DELIVER){
                 imgItemIcon.setImageDrawable(ContextCompat.getDrawable(mContext,R.drawable.ic_business_center_black_48dp));
