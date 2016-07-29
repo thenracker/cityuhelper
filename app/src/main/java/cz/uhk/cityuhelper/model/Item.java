@@ -1,7 +1,5 @@
 package cz.uhk.cityuhelper.model;
 
-import com.google.android.gms.maps.model.LatLng;
-
 import java.io.Serializable;
 import java.util.UUID;
 
@@ -18,10 +16,10 @@ public class Item implements IItem, Serializable {
     private String description;
     protected Author author;
     protected Type type;
-    protected LatLng position;
+    protected MyLatLng position;
 
 
-    public Item(Type type, String title, String description, Author author, LatLng position){
+    public Item(Type type, String title, String description, Author author, MyLatLng position){
         this.id = UUID.randomUUID().toString(); //TODO add testing if it exists??
         this.title = title;
         this.description = description;
@@ -82,11 +80,11 @@ public class Item implements IItem, Serializable {
         this.type = type;
     }
 
-    public LatLng getPosition() {
+    public MyLatLng getPosition() {
         return position;
     }
 
-    public void setPosition(LatLng position) {
+    public void setPosition(MyLatLng position) {
         this.position = position;
     }
 }

@@ -1,5 +1,6 @@
 package cz.uhk.cityuhelper;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
@@ -7,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -18,6 +20,7 @@ public class NewItemActivity extends AppCompatActivity {
 
     private EditText editName, editSubject, editDescription, editPhone, editEmail;
     private LinearLayout layoutLocation, layoutFile, layoutColorOrBlackPrint;
+    private ImageButton btnFindLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,9 +76,8 @@ public class NewItemActivity extends AppCompatActivity {
         findViewById(R.id.btnSend).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO SAVE IT
 
-                //saveIt();
+                //CREATE AND SAVE NEW OBJECT
                 Item newItem = new Item((Item.Type)mySpinner.getSelectedItem(),
                         editSubject.getText().toString().trim(),
                         editDescription.getText().toString().trim(),
@@ -85,9 +87,22 @@ public class NewItemActivity extends AppCompatActivity {
                                 null); //TODO add LATLNG
 
                 Toast.makeText(getApplicationContext(), "I'm saving your task..", Toast.LENGTH_SHORT).show();
+
+                StorageManager.saveObject(getApplicationContext(),newItem);
+
                 finish();
             }
         });
+
+        btnFindLocation = (ImageButton)findViewById(R.id.btnFindLocation);
+        btnFindLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(NewItemActivity.this, MapActivity.class);
+                startActivity(i);
+            }
+        });
+
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }

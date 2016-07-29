@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         Delivery d = new Delivery();
         d.setType(Item.Type.DELIVER);
         */
-        items = FakeDataBuilder.getListOfFakeDelivers();
+        items = StorageManager.loadArray(getApplicationContext());
 
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
