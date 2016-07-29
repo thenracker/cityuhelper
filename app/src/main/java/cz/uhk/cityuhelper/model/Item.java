@@ -8,9 +8,6 @@ import java.util.UUID;
  */
 public class Item implements IItem, Serializable {
 
-    //ID is here for future reasons
-    public final String FAKE_ID = "fakeIdXY";
-
     protected String id;
     protected String title;
     private String description;
@@ -50,7 +47,7 @@ public class Item implements IItem, Serializable {
 
     //GETTERS & SETTERS
     public String getId(){
-        return FAKE_ID;
+        return this.id;
     }
 
     public void setId(String id) {

@@ -31,6 +31,18 @@ public class StorageManager {
         //SAVE ALL
         saveArray(context,objects);
     }
+    public static Item loadObject(Context context, String id){
+        ArrayList<Item> items = loadArray(context);
+
+        Item myItem = null;
+
+        for(Item i : items){
+            if(i.getId().equals(id))
+                myItem = i;
+        }
+
+        return myItem;
+    }
 
     //SAVE
     public static void saveArray(Context context, ArrayList<Item> list){
