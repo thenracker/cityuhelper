@@ -15,9 +15,23 @@ import cz.uhk.cityuhelper.model.Item;
 
 public class MainActivity extends AppCompatActivity {
 
+    public final static int ITEMADDED = 1;
+    public final static int ITEMADDEDOK = 2;
+    public final static int ITEMADDEDABORTED = 3;
+
     //private ArrayAdapter<Item>
     private RecyclerView recyclerView;
+    private ItemRecylerAdapter adapter;
     private ArrayList<Item> items;
+
+    public void refreshPlease(){
+        if(adapter != null){
+            items.clear();
+            items.addAll(StorageManager.loadArray(getApplicationContext()));
+                adapter.notifyDataSetChanged();
+            System.out.println("resumed new data show up");
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,10 +40,6 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        /*
-        Delivery d = new Delivery();
-        d.setType(Item.Type.DELIVER);
-        */
         items = StorageManager.loadArray(getApplicationContext());
 
         LinearLayoutManager llm = new LinearLayoutManager(this);
@@ -37,12 +47,9 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(llm);
-        recyclerView.setAdapter(new ItemRecylerAdapter(items,this));
+        adapter = new ItemRecylerAdapter(items,this);
+        recyclerView.setAdapter(adapter);
 
-        /*
-            Intent map = new Intent(MainActivity.this, MapActivity.class);
-            startActivity(map);
-         */
     }
 
     @Override
@@ -62,9 +69,21 @@ public class MainActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_add) {
             Intent addIntent = new Intent(MainActivity.this, NewItemActivity.class);
-            startActivity(addIntent);
+            //startActivity(addIntent);
+            startActivityForResult(addIntent,ITEMADDED);
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == ITEMADDED){
+            if(resultCode == ITEMADDEDOK){
+                refreshPlease();
+            }
+
+        }
     }
 }

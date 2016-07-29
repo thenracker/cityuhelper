@@ -15,10 +15,16 @@ import android.widget.Toast;
 
 import cz.uhk.cityuhelper.model.Author;
 import cz.uhk.cityuhelper.model.Item;
+import cz.uhk.cityuhelper.model.MyLatLng;
 
 public class NewItemActivity extends AppCompatActivity {
 
-    private EditText editName, editSubject, editDescription, editPhone, editEmail;
+    public static final int CHOOSE_MAP_POSITION = 8;
+
+    private EditText editName, editSubject, editDescription, editPhone, editEmail, editPosition;
+
+    private Double dLatitude, dLongitude;
+
     private LinearLayout layoutLocation, layoutFile, layoutColorOrBlackPrint;
     private ImageButton btnFindLocation;
 
@@ -72,10 +78,16 @@ public class NewItemActivity extends AppCompatActivity {
         editDescription = (EditText)findViewById(R.id.editDescription);
         editPhone = (EditText)findViewById(R.id.editPhone);
         editEmail = (EditText)findViewById(R.id.editEmail);
+        editPosition = (EditText)findViewById(R.id.editPosition);
 
         findViewById(R.id.btnSend).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                MyLatLng lll = null;
+                if(dLatitude != null && dLongitude != null){
+                    lll = new MyLatLng(dLatitude,dLongitude);
+                }
 
                 //CREATE AND SAVE NEW OBJECT
                 Item newItem = new Item((Item.Type)mySpinner.getSelectedItem(),
@@ -84,11 +96,13 @@ public class NewItemActivity extends AppCompatActivity {
                         new Author(editName.getText().toString().trim(),
                                 editEmail.getText().toString().trim(),
                                 editPhone.getText().toString().trim()),
-                                null); //TODO add LATLNG
+                        lll);
 
                 Toast.makeText(getApplicationContext(), "I'm saving your task..", Toast.LENGTH_SHORT).show();
 
                 StorageManager.saveObject(getApplicationContext(),newItem);
+
+                setResult(MainActivity.ITEMADDEDOK);
 
                 finish();
             }
@@ -99,7 +113,9 @@ public class NewItemActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(NewItemActivity.this, MapActivity.class);
-                startActivity(i);
+
+                startActivityForResult(i,CHOOSE_MAP_POSITION);
+
             }
         });
 
@@ -108,11 +124,32 @@ public class NewItemActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == CHOOSE_MAP_POSITION && data != null) {
+            Double latitude = data.getDoubleExtra("latitude",0);
+            Double longitude = data.getDoubleExtra("longitude",0);
+
+            if(latitude == null || longitude == null || latitude == 0 || longitude == 0){
+                Toast.makeText(getApplicationContext(), "You didn't picked location!", Toast.LENGTH_SHORT).show();
+                editPosition.setText("You didn't picked location");
+                dLatitude = null; dLongitude = null;
+            }
+            else{
+                dLatitude = latitude; dLongitude = longitude;
+                editPosition.setText("GPS: "+latitude+", "+longitude);
+            }
+        }
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
         if (id == android.R.id.home) {
+            setResult(MainActivity.ITEMADDEDABORTED);
             this.finish();
             return true;
         }

@@ -187,7 +187,7 @@
                     android:layout_marginLeft="8dp"
                     android:clickable="false"
                     android:enabled="false"
-                    android:id="@+id/PositionEditView" />
+                    android:id="@+id/editPosition" />
 
                 <ImageButton
                     android:layout_width="50dp"

@@ -27,9 +27,11 @@ public class StorageManager {
         //LOAD ALL
         ArrayList<Item> objects = (ArrayList<Item>) loadArray(context);
         //ADD NEW ONE
-        objects.add(object);
+        ArrayList<Item> newObjects = new ArrayList<>();
+        newObjects.add(object);
+        newObjects.addAll(objects); //add the rest of the objects
         //SAVE ALL
-        saveArray(context,objects);
+        saveArray(context,newObjects);
     }
     public static Item loadObject(Context context, String id){
         ArrayList<Item> items = loadArray(context);
@@ -97,12 +99,10 @@ public class StorageManager {
             ois.close();
 
         }catch(FileNotFoundException e){
-
         }catch(IOException ee){
-            ee.printStackTrace();
         }catch(ClassNotFoundException eee){
-
         }
+
         return array;
     }
 
