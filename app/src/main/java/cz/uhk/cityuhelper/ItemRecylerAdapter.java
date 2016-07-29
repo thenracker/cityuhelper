@@ -92,7 +92,7 @@ public class ItemRecylerAdapter extends RecyclerView.Adapter<ItemRecylerAdapter.
         public void onClick(View view) {
 
             Intent myIntent = new Intent(mContext, DetailActivity.class);
-            myIntent.putExtra("name", feedItemList.get(getLayoutPosition()).getAuthor().getSurname());
+            myIntent.putExtra("id", feedItemList.get(getLayoutPosition()).getId());
             mContext.startActivity(myIntent);
 
         }
