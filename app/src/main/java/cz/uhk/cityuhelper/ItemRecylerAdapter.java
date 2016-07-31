@@ -1,8 +1,10 @@
 package cz.uhk.cityuhelper;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -51,7 +53,7 @@ public class ItemRecylerAdapter extends RecyclerView.Adapter<ItemRecylerAdapter.
 
     //VIEW HOLDER FOR RECYCLER ADAPTER
     public class CustomViewHolder extends RecyclerView.ViewHolder
-            implements View.OnClickListener {
+            implements View.OnClickListener, View.OnLongClickListener {
 
         private TextView txtItemTitle;
         private TextView txtItemAuthor;
@@ -60,11 +62,14 @@ public class ItemRecylerAdapter extends RecyclerView.Adapter<ItemRecylerAdapter.
 
         public CustomViewHolder(View view) {
             super(view);
+
             txtItemTitle = (TextView) view.findViewById(R.id.txtItemTitle);
             txtItemAuthor = (TextView) view.findViewById(R.id.txtItemAuthor);
             txtItemLocation = (TextView) view.findViewById(R.id.txtItemLocation);
             imgItemIcon = (ImageView) view.findViewById(R.id.imgItemIcon);
+
             view.setOnClickListener(this);
+            view.setOnLongClickListener(this);
         }
 
         public void bindView(final Item feedItem) {
@@ -97,6 +102,23 @@ public class ItemRecylerAdapter extends RecyclerView.Adapter<ItemRecylerAdapter.
 
         }
 
+        @Override
+        public boolean onLongClick(View view) {
+
+            new AlertDialog.Builder(mContext)
+                    .setTitle("Removing item")
+                    .setMessage("Are you sure you want to remove this item?")
+                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                        public void onClick(DialogInterface dialog, int whichButton) {
+                            StorageManager.deleteObject(mContext, feedItemList.get(getLayoutPosition()).getId());
+                            notifyItemRemoved(getLayoutPosition());
+                        }})
+
+                    .setNegativeButton(android.R.string.no, null).show();
+
+            return true;
+        }
     }
 
 }

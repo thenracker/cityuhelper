@@ -23,6 +23,16 @@ public class StorageManager {
         return new File(context.getExternalFilesDir(".data")+"/.items.dat").exists();
     }
 
+    public static void deleteObject(Context context, String id){
+        ArrayList<Item> items = loadArray(context);
+        for(Item i : items){
+            if(i.getId().equals(id)){
+                items.remove(i);
+                break;
+            }
+        }
+        saveArray(context, items);
+    }
     public static void saveObject(Context context, Item object){
         //LOAD ALL
         ArrayList<Item> objects = (ArrayList<Item>) loadArray(context);
