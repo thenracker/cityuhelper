@@ -14,6 +14,7 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
+import cz.uhk.cityuhelper.model.EnumStringConverter;
 import cz.uhk.cityuhelper.model.Item;
 
 public class MainActivity extends AppCompatActivity {
@@ -33,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
             items.clear();
             items.addAll(StorageManager.loadArray(getApplicationContext()));
             adapter.animateTo(items);
-            System.out.println("resumed new data show up");
         }
     }
 
@@ -82,28 +82,24 @@ public class MainActivity extends AppCompatActivity {
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
 
 
-            alertDialogBuilder.setTitle("Title");
+            alertDialogBuilder.setTitle( getResources().getString(R.string.action_filter) );
             alertDialogBuilder
                     .setCancelable(false)
-                    .setSingleChoiceItems(Item.Type.getStringValues(), -1, null)
-                    .setPositiveButton("Filter", new DialogInterface.OnClickListener() {
+                    .setSingleChoiceItems(new EnumStringConverter(getApplicationContext()).enumToString(Item.Type.values()), -1, null)
+                    .setPositiveButton( getResources().getString(R.string.action_filter ), new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             ListView lw = ((AlertDialog) dialog).getListView();
 
                             if(lw.getCheckedItemPosition() > -1){
                                 Object checkedItem = lw.getAdapter().getItem(lw.getCheckedItemPosition());
-                                for(Item.Type t : Item.Type.values()){
-                                    if(t.toString().equals(checkedItem)){
-                                        adapter.filter(t, items);
-                                    }
-                                }
+                                adapter.filter(new EnumStringConverter(getApplicationContext()).getEnumForString((String)checkedItem), items);
                             }
 
                             else
                                 dialog.dismiss();
                         }
                     })
-                    .setNegativeButton("Show All", new DialogInterface.OnClickListener() {
+                    .setNegativeButton( getResources().getString(R.string.showAll), new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             adapter.filter(null,items);
                             dialog.cancel();

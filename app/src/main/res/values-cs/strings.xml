@@ -27,4 +27,9 @@
     <string name="question">Otázka</string>
     <string name="need">Potřeba</string>
 
+    <string name="saving">Ukládám...</string>
+    <string name="showAll">Ukázat vše</string>
+    <string name="removing">Odstraňování</string>
+    <string name="areyousure">Jste si jistí smazáním vybrané položky?</string>
+
 </resources>

@@ -121,7 +121,7 @@ public class NewItemActivity extends AppCompatActivity {
                 PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putString("email", editEmail.getText().toString()).commit();
 
 
-                Toast.makeText(getApplicationContext(), "I'm saving your task..", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), getResources().getString(R.string.saving), Toast.LENGTH_SHORT).show();
 
                 StorageManager.saveObject(getApplicationContext(),newItem);
 

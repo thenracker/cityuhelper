@@ -169,8 +169,8 @@ public class ItemRecylerAdapter extends RecyclerView.Adapter<ItemRecylerAdapter.
         public boolean onLongClick(View view) {
 
             new AlertDialog.Builder(mContext)
-                    .setTitle("Removing item")
-                    .setMessage("Are you sure you want to remove this item?")
+                    .setTitle(mContext.getResources().getString(R.string.removing))
+                    .setMessage(mContext.getResources().getString(R.string.areyousure))
                     .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
                         public void onClick(DialogInterface dialog, int whichButton) {
