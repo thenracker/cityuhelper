@@ -43,6 +43,14 @@ public class Item implements IItem, Serializable {
         public String toString(){
             return toString;
         }
+
+        public static String[] getStringValues(){
+            String[] strings = new String[values().length];
+            for(int i = 0; i < values().length; i++){
+                strings[i] = values()[i].toString();
+            }
+            return strings;
+        }
     }
 
     //GETTERS & SETTERS

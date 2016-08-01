@@ -1,13 +1,16 @@
 package cz.uhk.cityuhelper;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
 
 import java.util.ArrayList;
 
@@ -22,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     //private ArrayAdapter<Item>
     private RecyclerView recyclerView;
     private ItemRecylerAdapter adapter;
+    private ArrayList<Item> adapterArray;
     private ArrayList<Item> items;
 
     public void refreshPlease(){
@@ -40,14 +44,15 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        items = StorageManager.loadArray(getApplicationContext());
+        items = StorageManager.loadArray(getApplicationContext()); //this list is with all
+        adapterArray = StorageManager.loadArray(getApplicationContext()); //this is only for adapter
 
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
 
         recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(llm);
-        adapter = new ItemRecylerAdapter(items,this);
+        adapter = new ItemRecylerAdapter(adapterArray, this);
         recyclerView.setAdapter(adapter);
 
     }
@@ -60,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(final MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
@@ -71,8 +76,43 @@ public class MainActivity extends AppCompatActivity {
             Intent addIntent = new Intent(MainActivity.this, NewItemActivity.class);
             //startActivity(addIntent);
             startActivityForResult(addIntent,ITEMADDED);
+            //adapter.filter(Item.Type.DELIVER, items);
         }
+        if (id == R.id.action_filter){
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
 
+
+            alertDialogBuilder.setTitle("Title");
+            alertDialogBuilder
+                    .setCancelable(false)
+                    .setSingleChoiceItems(Item.Type.getStringValues(), -1, null)
+                    .setPositiveButton("Filter", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            ListView lw = ((AlertDialog) dialog).getListView();
+
+                            if(lw.getCheckedItemPosition() > -1){
+                                Object checkedItem = lw.getAdapter().getItem(lw.getCheckedItemPosition());
+                                for(Item.Type t : Item.Type.values()){
+                                    if(t.toString().equals(checkedItem)){
+                                        adapter.filter(t, items);
+                                    }
+                                }
+                            }
+
+                            else
+                                dialog.dismiss();
+                        }
+                    })
+                    .setNegativeButton("Show All", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            adapter.filter(null,items);
+                            dialog.cancel();
+                        }
+                    });
+
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog.show();
+        }
         return super.onOptionsItemSelected(item);
     }
 
@@ -83,7 +123,6 @@ public class MainActivity extends AppCompatActivity {
             if(resultCode == ITEMADDEDOK){
                 refreshPlease();
             }
-
         }
     }
 }
