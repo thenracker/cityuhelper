@@ -1,7 +1,9 @@
 package cz.uhk.cityuhelper;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
@@ -80,6 +82,12 @@ public class NewItemActivity extends AppCompatActivity {
         editEmail = (EditText)findViewById(R.id.editEmail);
         editPosition = (EditText)findViewById(R.id.editPosition);
 
+        //fill in the name if there is
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        editName.setText(prefs.getString("name", "")); //2nd parameter is default string nothing found
+        editEmail.setText(prefs.getString("email", ""));
+        editPhone.setText(prefs.getString("phone", ""));
+
         findViewById(R.id.btnSend).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -97,6 +105,13 @@ public class NewItemActivity extends AppCompatActivity {
                                 editEmail.getText().toString().trim(),
                                 editPhone.getText().toString().trim()),
                         lll);
+
+                //save name
+                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putString("name", editName.getText().toString()).commit();
+                PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putString("phone", editPhone.getText().toString()).commit();
+                PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putString("email", editEmail.getText().toString()).commit();
+
 
                 Toast.makeText(getApplicationContext(), "I'm saving your task..", Toast.LENGTH_SHORT).show();
 
