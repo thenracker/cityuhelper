@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import cz.uhk.cityuhelper.model.Item;
@@ -40,16 +41,78 @@ public class ItemRecylerAdapter extends RecyclerView.Adapter<ItemRecylerAdapter.
         Item feedItem = feedItemList.get(i);
         customViewHolder.bindView(feedItem);
     }
-/*
-    public void runOnUiThred(Runnable runnable) {
-        ((Activity) mContext).runOnUiThread(runnable);
-    }
-*/
+
     @Override
     public int getItemCount() {
         return (null != feedItemList ? feedItemList.size() : 0);
     }
 
+
+    // METHODS TO FILTER LIST
+    // <editor-fold desc="FILTERING METHODS" >
+    public void setModels(List<Item> model){
+        feedItemList = new ArrayList<>(model);
+    }
+    public Item removeItem(int position) {
+        final Item model = feedItemList.remove(position);
+        notifyItemRemoved(position);
+        return model;
+    }
+    public void addItem(int position, Item model) {
+        feedItemList.add(position, model);
+        notifyItemInserted(position);
+    }
+    public void moveItem(int fromPosition, int toPosition) {
+        final Item model = feedItemList.remove(fromPosition);
+        feedItemList.add(toPosition, model);
+        notifyItemMoved(fromPosition, toPosition);
+    }
+    public void animateTo(List<Item> models) {
+        applyAndAnimateRemovals(models);
+        applyAndAnimateAdditions(models);
+        applyAndAnimateMovedItems(models);
+    }
+    private void applyAndAnimateRemovals(List<Item> newModels) {
+        for (int i = feedItemList.size() - 1; i >= 0; i--) {
+            final Item model = feedItemList.get(i);
+            if (!newModels.contains(model)) {
+                removeItem(i);
+            }
+        }
+    }
+    private void applyAndAnimateAdditions(List<Item> newModels) {
+        for (int i = 0, count = newModels.size(); i < count; i++) {
+            final Item model = newModels.get(i);
+            if (!feedItemList.contains(model)) {
+                addItem(i, model);
+            }
+        }
+    }
+    private void applyAndAnimateMovedItems(List<Item> newModels) {
+        for (int toPosition = newModels.size() - 1; toPosition >= 0; toPosition--) {
+            final Item model = newModels.get(toPosition);
+            final int fromPosition = feedItemList.indexOf(model);
+            if (fromPosition >= 0 && fromPosition != toPosition) {
+                moveItem(fromPosition, toPosition);
+            }
+        }
+    }
+    public void filter(Item.Type type, List<Item> items){
+        List<Item> filteredItems = new ArrayList<>();
+        if(type == null){
+            //ALL
+            filteredItems.addAll(items);
+        }else{
+            for(Item i : items){
+                if(i.getType() == type)
+                    filteredItems.add(i);
+            }
+        }
+        //this.feedItemList = filteredItems;
+        //notifyDataSetChanged();
+        animateTo(filteredItems);
+    }
+    // </editor-fold>
 
     //VIEW HOLDER FOR RECYCLER ADAPTER
     public class CustomViewHolder extends RecyclerView.ViewHolder
