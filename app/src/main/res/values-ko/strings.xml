@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">CityU Helper</string>
+    <string name="action_addItem">Add Item</string>
+    <string name="action_filter">Filter</string>
+
+    <string name="title_activity_map">Map</string>
+    <string name="title_activity_detail">Detail</string>
+    <string name="title_activity_newItem">New Item</string>
+
+    <string name="userName">Name</string>
+    <string name="subject">Subject</string>
+    <string name="description">Description</string>
+    <string name="phoneNumber">Phone number</string>
+    <string name="email">Email</string>
+    <string name="position">Position</string>
+    <string name="send">Send</string>
+    <string name="colorful">Colorful</string>
+    <string name="blackandwhite">Black and white</string>
+    <string name="color">Color</string>
+    <string name="file">File</string>
+    <string name="type">Type</string>
+
+</resources>

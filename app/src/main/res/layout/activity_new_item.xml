@@ -29,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Type:"
+            android:text="@string/type"
             android:id="@+id/TypeTextView"
             android:textSize="15dp"
             android:layout_marginLeft="10dp" />
@@ -38,7 +38,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/spinner"
-            android:entries="@array/type"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp" />
 
@@ -53,7 +52,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="textPersonName"
                     android:id="@+id/editNameSurname"
-                    android:hint="Your name"/>
+                    android:hint="@string/userName"/>
 
             </android.support.design.widget.TextInputLayout>
 
@@ -68,7 +67,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/editSubject"
-                    android:hint="Subject"/>
+                    android:hint="@string/subject"/>
 
             </android.support.design.widget.TextInputLayout>
 
@@ -82,7 +81,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="textMultiLine"
                     android:id="@+id/editDescription"
-                    android:hint="Description"
+                    android:hint="@string/description"
                     android:phoneNumber="false" />
 
             </android.support.design.widget.TextInputLayout>
@@ -96,7 +95,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="phone"
-                    android:hint="Phone number"
+                    android:hint="@string/phoneNumber"
                     android:id="@+id/editPhone" />
 
             </android.support.design.widget.TextInputLayout>
@@ -110,7 +109,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textEmailAddress"
-                    android:hint="Your email"
+                    android:hint="@string/email"
                     android:id="@+id/editEmail" />
 
             </android.support.design.widget.TextInputLayout>
@@ -128,7 +127,7 @@
                     android:layout_weight="1"
                     android:clickable="false"
                     android:enabled="false"
-                    android:hint="File"
+                    android:hint="@string/file"
                     android:id="@+id/editFilePath"
                     android:layout_marginLeft="8dp" />
 
@@ -152,7 +151,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="Color:  "
+                    android:text="@string/color"
                     android:paddingTop="8dp"
                     android:layout_gravity="bottom"
                     android:id="@+id/ColorTextView"
@@ -166,9 +165,9 @@
                     android:text="New ToggleButton"
                     android:layout_marginLeft="16dp"
                     android:id="@+id/btnColorBlackToggle"
-                    android:textOn="Colorful"
+                    android:textOn="@string/colorful"
                     android:textAllCaps="false"
-                    android:textOff="Black" />
+                    android:textOff="@string/blackandwhite" />
 
             </LinearLayout>
 
@@ -183,7 +182,7 @@
                     android:layout_weight="1"
                     android:layout_height="match_parent"
                     android:inputType="textMultiLine"
-                    android:hint="Position"
+                    android:hint="@string/position"
                     android:layout_marginLeft="8dp"
                     android:clickable="false"
                     android:enabled="false"
@@ -201,7 +200,7 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Send"
+                android:text="@string/send"
                 android:textAllCaps="false"
                 android:layout_marginTop="10dp"
                 android:paddingRight="20dp"

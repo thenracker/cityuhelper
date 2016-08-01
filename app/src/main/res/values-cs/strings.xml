@@ -1,0 +1,24 @@
+<resources>
+
+    <string name="app_name">CityU Helper</string>
+    <string name="action_addItem">Nový</string>
+    <string name="action_filter">Filtr</string>
+
+    <string name="title_activity_map">Mapa</string>
+    <string name="title_activity_detail">Detail</string>
+    <string name="title_activity_newItem">Nový</string>
+
+    <string name="userName">Jméno</string>
+    <string name="subject">Předmět</string>
+    <string name="description">Popisek</string>
+    <string name="phoneNumber">Telefonní číslo</string>
+    <string name="email">Email</string>
+    <string name="position">Pozice</string>
+    <string name="send">Odeslat</string>
+    <string name="colorful">Barevně</string>
+    <string name="blackandwhite">Černobíle</string>
+    <string name="color">Barva</string>
+    <string name="file">Soubor</string>
+    <string name="type">Druh</string>
+
+</resources>
