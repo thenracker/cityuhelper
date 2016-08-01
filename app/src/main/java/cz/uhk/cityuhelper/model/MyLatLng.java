@@ -1,5 +1,7 @@
 package cz.uhk.cityuhelper.model;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import java.io.Serializable;
 
 /**
@@ -12,4 +14,7 @@ public class MyLatLng implements Serializable{
         this.latitude = la;
         this.longitude = lo;
     }
+
+    public LatLng getLatLng(){
+        return new LatLng(latitude,longitude);    }
 }

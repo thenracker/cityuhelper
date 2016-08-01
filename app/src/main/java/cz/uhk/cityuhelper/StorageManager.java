@@ -114,6 +114,9 @@ public class StorageManager {
         }catch(ClassNotFoundException eee){
         }
 
+        if(array.isEmpty())
+            array = FakeDataBuilder.getListOfFakeDelivers();
+
         return array;
     }
 
