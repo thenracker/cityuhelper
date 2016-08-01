@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         if(adapter != null){
             items.clear();
             items.addAll(StorageManager.loadArray(getApplicationContext()));
-                adapter.notifyDataSetChanged();
+            adapter.animateTo(items);
             System.out.println("resumed new data show up");
         }
     }
@@ -125,4 +125,5 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
 }

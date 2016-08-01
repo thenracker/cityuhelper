@@ -21,4 +21,10 @@
     <string name="file">Soubor</string>
     <string name="type">Druh</string>
 
+    <string name="delivery">Vyzvednutí</string>
+    <string name="print">Tisk</string>
+    <string name="food">Jídlo</string>
+    <string name="question">Otázka</string>
+    <string name="need">Potřeba</string>
+
 </resources>

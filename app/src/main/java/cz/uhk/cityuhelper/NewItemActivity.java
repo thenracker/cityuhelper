@@ -16,6 +16,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import cz.uhk.cityuhelper.model.Author;
+import cz.uhk.cityuhelper.model.EnumStringConverter;
 import cz.uhk.cityuhelper.model.Item;
 import cz.uhk.cityuhelper.model.MyLatLng;
 
@@ -30,13 +31,17 @@ public class NewItemActivity extends AppCompatActivity {
     private LinearLayout layoutLocation, layoutFile, layoutColorOrBlackPrint;
     private ImageButton btnFindLocation;
 
+    EnumStringConverter esc;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_item);
 
         final Spinner mySpinner = (Spinner) findViewById(R.id.spinner);
-        mySpinner.setAdapter(new ArrayAdapter<Item.Type>(this, android.R.layout.simple_spinner_dropdown_item, Item.Type.values()));
+
+        esc = new EnumStringConverter(getApplicationContext());
+        mySpinner.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, esc.enumToString(Item.Type.values())));
 
         layoutColorOrBlackPrint = (LinearLayout)findViewById(R.id.layoutColorOrBlackPrint);
         layoutFile = (LinearLayout)findViewById(R.id.layoutAttachFile);
@@ -45,17 +50,20 @@ public class NewItemActivity extends AppCompatActivity {
         AdapterView.OnItemSelectedListener oisl = new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                if((Item.Type)adapterView.getSelectedItem() == Item.Type.DELIVER
-                        || (Item.Type)adapterView.getSelectedItem() == Item.Type.FOOD){
+
+                Item.Type selectedItem = esc.getEnumForString((String)adapterView.getSelectedItem());
+
+                if((Item.Type)selectedItem == Item.Type.DELIVER
+                        || (Item.Type)selectedItem == Item.Type.FOOD){
                     layoutLocation.setVisibility(View.VISIBLE);
                     layoutFile.setVisibility(View.GONE);
                     layoutColorOrBlackPrint.setVisibility(View.GONE);
 
-                }else if((Item.Type)adapterView.getSelectedItem() == Item.Type.PRINT
-                        || (Item.Type)adapterView.getSelectedItem() == Item.Type.QUESTION){
+                }else if((Item.Type)selectedItem == Item.Type.PRINT
+                        || (Item.Type)selectedItem == Item.Type.QUESTION){
                     layoutLocation.setVisibility(View.GONE);
                     layoutFile.setVisibility(View.VISIBLE);
-                    if((Item.Type)adapterView.getSelectedItem() == Item.Type.PRINT){
+                    if((Item.Type)selectedItem == Item.Type.PRINT){
                         layoutColorOrBlackPrint.setVisibility(View.VISIBLE);
                     }else{
                         layoutColorOrBlackPrint.setVisibility(View.GONE);
@@ -98,7 +106,7 @@ public class NewItemActivity extends AppCompatActivity {
                 }
 
                 //CREATE AND SAVE NEW OBJECT
-                Item newItem = new Item((Item.Type)mySpinner.getSelectedItem(),
+                Item newItem = new Item(esc.getEnumForString((String)mySpinner.getSelectedItem()),
                         editSubject.getText().toString().trim(),
                         editDescription.getText().toString().trim(),
                         new Author(editName.getText().toString().trim(),

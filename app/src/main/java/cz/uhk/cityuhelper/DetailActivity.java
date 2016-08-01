@@ -12,6 +12,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import cz.uhk.cityuhelper.model.EnumStringConverter;
 import cz.uhk.cityuhelper.model.Item;
 
 public class DetailActivity extends AppCompatActivity {
@@ -31,7 +32,8 @@ public class DetailActivity extends AppCompatActivity {
         if(item != null){
             //TODO fill those components :)
             //((TextView)findViewById(R.id.txtDetailType)).setText(item.getType().toString());
-            setTitle(item.getType().toString());
+
+            setTitle(new EnumStringConverter(getApplicationContext()).enumToString(item.getType()));
             ((TextView)findViewById(R.id.txtDetailName)).setText(item.getAuthor().getName().toString());
             ((TextView)findViewById(R.id.txtDetailSubject)).setText(item.getTitle().toString());
             ((TextView)findViewById(R.id.txtDetailDescription)).setText(item.getDescription().toString());
