@@ -46,7 +46,7 @@ public class DetailActivity extends AppCompatActivity {
                 String s = "Gps: "+item.getPosition().latitude+", "+item.getPosition().longitude;
                 ((TextView)findViewById(R.id.txtDetailPosition)).setText(s);
             }else{
-                ((TextView)findViewById(R.id.txtDetailPosition)).setText("-");
+                //DO NOTHING
             }
         }
 

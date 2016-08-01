@@ -32,4 +32,8 @@
     <string name="removing">Odstraňování</string>
     <string name="areyousure">Jste si jistí smazáním vybrané položky?</string>
 
+
+    <string name="from">od</string>
+    <string name="to">do</string>
+
 </resources>

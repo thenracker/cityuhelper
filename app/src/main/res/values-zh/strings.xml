@@ -19,4 +19,9 @@
     <string name="file">File</string>
     <string name="type">Type</string>
 
+    <string name="saving">保存項目</string>
+    <string name="showAll">顯示所有</string>
+    <string name="removing">刪除</string>
+    <string name="areyousure">你確定要刪除這個項目嗎</string>
+
 </resources>

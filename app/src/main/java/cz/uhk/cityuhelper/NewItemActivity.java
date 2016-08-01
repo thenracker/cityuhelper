@@ -1,5 +1,6 @@
 package cz.uhk.cityuhelper;
 
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -13,7 +14,11 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
+
+import java.util.Calendar;
 
 import cz.uhk.cityuhelper.model.Author;
 import cz.uhk.cityuhelper.model.EnumStringConverter;
@@ -30,6 +35,10 @@ public class NewItemActivity extends AppCompatActivity {
 
     private LinearLayout layoutLocation, layoutFile, layoutColorOrBlackPrint;
     private ImageButton btnFindLocation;
+
+    private TextView txtDateFrom, txtDateTo;
+
+    private int hourFrom, minuteFrom, hourTo, minuteTo;
 
     EnumStringConverter esc;
 
@@ -112,7 +121,9 @@ public class NewItemActivity extends AppCompatActivity {
                         new Author(editName.getText().toString().trim(),
                                 editEmail.getText().toString().trim(),
                                 editPhone.getText().toString().trim()),
-                        lll);
+                        lll,
+                        txtDateFrom.getText().toString(),
+                        txtDateTo.getText().toString());
 
                 //save name
                 SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
@@ -123,7 +134,7 @@ public class NewItemActivity extends AppCompatActivity {
 
                 Toast.makeText(getApplicationContext(), getResources().getString(R.string.saving), Toast.LENGTH_SHORT).show();
 
-                StorageManager.saveObject(getApplicationContext(),newItem);
+                StorageManager.saveObject(getApplicationContext(), newItem);
 
                 setResult(MainActivity.ITEMADDEDOK);
 
@@ -142,6 +153,56 @@ public class NewItemActivity extends AppCompatActivity {
             }
         });
 
+        txtDateFrom = (TextView) findViewById(R.id.txtDateFrom);
+        txtDateTo = (TextView) findViewById(R.id.txtDateTo);
+
+        //INIT TIME
+        Calendar mcurrentTime = Calendar.getInstance();
+        minuteFrom = mcurrentTime.get(Calendar.MINUTE); hourFrom = mcurrentTime.get(Calendar.HOUR_OF_DAY);
+
+        mcurrentTime.add(Calendar.MINUTE, 60);
+        minuteTo = mcurrentTime.get(Calendar.MINUTE); hourTo = mcurrentTime.get(Calendar.HOUR_OF_DAY);
+
+        txtDateFrom.setText( hourFrom + ":" + String.format("%02d", minuteFrom) );
+        txtDateTo.setText( hourTo + ":" + String.format("%02d", minuteTo) );
+
+        txtDateFrom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Calendar mcurrentTime = Calendar.getInstance();
+                int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
+                int minute = mcurrentTime.get(Calendar.MINUTE);
+                TimePickerDialog mTimePicker;
+                mTimePicker = new TimePickerDialog(NewItemActivity.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+
+                        txtDateFrom.setText( selectedHour + ":" + String.format("%02d", selectedMinute) );
+                    }
+                }, hour, minute, true);//Yes 24 hour time
+                //mTimePicker.setTitle("Select Time");
+                mTimePicker.show();
+            }
+        });
+        txtDateTo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Calendar mcurrentTime = Calendar.getInstance();
+                int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
+                int minute = mcurrentTime.get(Calendar.MINUTE);
+                TimePickerDialog mTimePicker;
+                mTimePicker = new TimePickerDialog(NewItemActivity.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                        txtDateTo.setText( selectedHour + ":" + String.format("%02d", selectedMinute) );
+                    }
+                }, hour, minute, true);//Yes 24 hour time
+                //mTimePicker.setTitle("Select Time");
+                mTimePicker.show();
+            }
+        });
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }

@@ -14,15 +14,17 @@ public class Item implements IItem, Serializable {
     protected Author author;
     protected Type type;
     protected MyLatLng position;
+    protected String dateFrom, dateTo;
 
-
-    public Item(Type type, String title, String description, Author author, MyLatLng position){
+    public Item(Type type, String title, String description, Author author, MyLatLng position, String timeFrom, String timeTo){
         this.id = UUID.randomUUID().toString(); //TODO add testing if it exists??
         this.title = title;
         this.description = description;
         this.author = author;
         this.position = position;
         this.type = type;
+        this.dateFrom = timeFrom;
+        this.dateTo = timeTo;
     }
 
     public enum Type{
@@ -99,5 +101,21 @@ public class Item implements IItem, Serializable {
 
     public void setPosition(MyLatLng position) {
         this.position = position;
+    }
+
+    public String getDateFrom() {
+        return dateFrom;
+    }
+
+    public void setDateFrom(String dateFrom) {
+        this.dateFrom = dateFrom;
+    }
+
+    public String getDateTo() {
+        return dateTo;
+    }
+
+    public void setDateTo(String dateTo) {
+        this.dateTo = dateTo;
     }
 }

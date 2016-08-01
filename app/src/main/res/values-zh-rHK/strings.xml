@@ -24,4 +24,9 @@
     <string name="question">疑惑</string>
     <string name="need">需求</string>
 
+
+    <string name="saving">保存項目</string>
+    <string name="showAll">顯示所有</string>
+    <string name="removing">刪除</string>
+    <string name="areyousure">你確定要刪除這個項目嗎</string>
 </resources>
