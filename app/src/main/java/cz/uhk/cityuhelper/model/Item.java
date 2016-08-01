@@ -27,7 +27,7 @@ public class Item implements IItem, Serializable {
 
     public enum Type{
 
-        DELIVER("Delivery"),
+        DELIVER("Deliver"),
         PRINT("Print"),
         FOOD("Food"),
         NEED("Need"),

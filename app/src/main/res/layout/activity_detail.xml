@@ -29,14 +29,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Name: "
+            android:text="@string/userName"
             android:textColor="@color/colorPrimaryDark"/>
 
         <TextView
             android:id="@+id/txtDetailName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Toby"
+            android:text=""
             android:textSize="20sp"
 
             />
@@ -52,14 +52,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Subject: "
+            android:text="@string/subject"
             android:textColor="@color/colorPrimaryDark"/>
 
         <TextView
             android:id="@+id/txtDetailSubject"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pick Up My Express Before 4 pm"
+            android:text=""
             android:textSize="20sp"
             />
 
@@ -68,7 +68,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Description: "
+        android:text="@string/description"
         android:layout_marginBottom="1dp"
         android:textColor="@color/colorPrimaryDark"/>
 
@@ -76,14 +76,14 @@
         android:id="@+id/txtDetailDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="May a little bit heavy and it is a fragile."
+        android:text=""
         android:textSize="20sp"
         android:layout_marginBottom="5dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Mobile Phone: "
+        android:text="@string/phoneNumber"
         android:layout_marginBottom="1dp"
         android:textColor="@color/colorPrimaryDark"/>
 
@@ -91,14 +91,14 @@
         android:id="@+id/txtDetailPhone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="(852) 5434-3567"
+        android:text=""
         android:layout_marginBottom="5dp"
         android:textSize="20sp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Email: "
+        android:text="@string/email"
         android:layout_marginBottom="1dp"
         android:textColor="@color/colorPrimaryDark"/>
 
@@ -106,14 +106,14 @@
         android:id="@+id/txtDetailEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="xxx65788858@gmail.com"
+        android:text=""
         android:layout_marginBottom="5dp"
         android:textSize="20sp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Position: "
+        android:text="@string/position"
         android:id="@+id/txtDetailPosition"
         android:textColor="@color/colorPrimaryDark"/>
 
@@ -121,6 +121,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/mapView">
+
     </com.google.android.gms.maps.MapView>
 
 
