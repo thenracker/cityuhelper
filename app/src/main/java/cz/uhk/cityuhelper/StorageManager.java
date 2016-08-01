@@ -25,7 +25,8 @@ public class StorageManager {
 
     public static void deleteObject(Context context, String id){
         ArrayList<Item> items = loadArray(context);
-        for(Item i : items){
+        for(Item i : items)
+        {
             if(i.getId().equals(id)){
                 items.remove(i);
                 break;

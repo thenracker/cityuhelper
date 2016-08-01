@@ -1,24 +1,27 @@
 <resources>
 
-    <string name="app_name">CityU Helper</string>
-    <string name="action_addItem">Add Item</string>
-    <string name="action_filter">Filter</string>
-
-    <string name="title_activity_map">Map</string>
-    <string name="title_activity_detail">Detail</string>
-    <string name="title_activity_newItem">New Item</string>
-
-    <string name="userName">Name</string>
-    <string name="subject">Subject</string>
-    <string name="description">Description</string>
-    <string name="phoneNumber">Phone number</string>
-    <string name="email">Email</string>
-    <string name="position">Position</string>
-    <string name="send">Send</string>
-    <string name="colorful">Colorful</string>
-    <string name="blackandwhite">Black and white</string>
-    <string name="color">Color</string>
-    <string name="file">File</string>
-    <string name="type">Type</string>
+    <string name="app_name">城大小助手</string>
+    <string name="action_addItem">添加任务</string>
+    <string name="action_filter">分类筛选</string>
+    <string name="title_activity_map">地图</string>
+    <string name="title_activity_detail">详细</string>
+    <string name="title_activity_newItem">新建任务</string>
+    <string name="userName">用户名</string>
+    <string name="subject">事件</string>
+    <string name="description">详细描述</string>
+    <string name="phoneNumber">手机号码</string>
+    <string name="email">邮箱</string>
+    <string name="position">位置坐标</string>
+    <string name="send">发送</string>
+    <string name="colorful">彩色</string>
+    <string name="blackandwhite">黑白</string>
+    <string name="color">色彩</string>
+    <string name="file">文件名</string>
+    <string name="type">类型</string>
+    <string name="delivery">快递</string>
+    <string name="print">打印</string>
+    <string name="food">美食</string>
+    <string name="question">疑惑</string>
+    <string name="need">需求</string>
 
 </resources>
