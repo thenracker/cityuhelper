@@ -19,7 +19,6 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import java.util.Calendar;
-
 import cz.uhk.cityuhelper.model.Author;
 import cz.uhk.cityuhelper.model.EnumStringConverter;
 import cz.uhk.cityuhelper.model.Item;
@@ -47,7 +46,7 @@ public class NewItemActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_item);
 
-        final Spinner mySpinner = (Spinner) findViewById(R.id.spinner);
+        final Spinner mySpinner = (Spinner)findViewById(R.id.spinner);
 
         esc = new EnumStringConverter(getApplicationContext());
         mySpinner.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, esc.enumToString(Item.Type.values())));
