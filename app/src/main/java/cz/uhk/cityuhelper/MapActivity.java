@@ -44,7 +44,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
             @Override
             public void onMapClick(final LatLng latLng) {
                 mMap.clear();
-                mMap.addMarker(new MarkerOptions().position(latLng).title("Click here to confirm the position")).showInfoWindow();
+                mMap.addMarker(new MarkerOptions().position(latLng).title("CHOOSE")).showInfoWindow();
                 mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
 
                 mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {

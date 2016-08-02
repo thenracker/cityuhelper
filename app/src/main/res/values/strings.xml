@@ -3,6 +3,8 @@
     <string name="app_name">CityU Helper</string>
     <string name="action_addItem">Add Item</string>
     <string name="action_filter">Filter</string>
+    <string name="action_sendmail">Send Email</string>
+    <string name="action_call">Call</string>
 
     <string name="title_activity_map">Map</string>
     <string name="title_activity_detail">Detail</string>

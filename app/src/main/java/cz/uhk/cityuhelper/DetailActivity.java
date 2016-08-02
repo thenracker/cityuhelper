@@ -1,7 +1,10 @@
 package cz.uhk.cityuhelper;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
@@ -19,6 +22,9 @@ public class DetailActivity extends AppCompatActivity {
 
     private MapView mapView;
     private GoogleMap map;
+
+    private String email;
+    private String phoneNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +45,12 @@ public class DetailActivity extends AppCompatActivity {
             ((TextView)findViewById(R.id.txtDetailDescription)).setText(item.getDescription().toString());
             ((TextView)findViewById(R.id.txtDetailPhone)).setText(item.getAuthor().getTelephone().toString());
             ((TextView)findViewById(R.id.txtDetailEmail)).setText(item.getAuthor().getEmail().toString());
+
+            if(!item.getAuthor().getEmail().isEmpty())
+                email = item.getAuthor().getEmail().trim();
+
+            if(!item.getAuthor().getTelephone().isEmpty())
+                phoneNumber = item.getAuthor().getTelephone().trim();
 
             if(item.getPosition() != null){
                 //add gps coordinates and so on :)
@@ -61,7 +73,7 @@ public class DetailActivity extends AppCompatActivity {
                     map.getUiSettings().setAllGesturesEnabled(false);
                     map.getUiSettings().setZoomControlsEnabled(true);
                     map.addMarker(new MarkerOptions().position(item.getPosition().getLatLng())
-                            .title(item.getType()+":"+item.getTitle())).showInfoWindow();
+                            .title(item.getTitle())).showInfoWindow();
                     map.moveCamera(CameraUpdateFactory.newCameraPosition(new CameraPosition.Builder()
                             .target(item.getPosition().getLatLng()).zoom(17.0f).build()));
                 }
@@ -79,8 +91,35 @@ public class DetailActivity extends AppCompatActivity {
             this.finish();
             return true;
         }
+        if (id == R.id.action_sendmail){
+
+            if(email != null){
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("text/plain");
+                intent.putExtra(Intent.EXTRA_EMAIL, new String[]{email});
+                intent.putExtra(Intent.EXTRA_SUBJECT, "Reply");
+                intent.putExtra(Intent.EXTRA_TEXT, "Hello,\n\n");
+
+                startActivity(Intent.createChooser(intent, "Send Email"));
+            }
+
+        }
+        if (id == R.id.action_call){
+
+            if(phoneNumber != null){
+                Intent callIntent = new Intent(Intent.ACTION_DIAL);
+                callIntent.setData(Uri.parse("tel:"+phoneNumber));
+                startActivity(callIntent);
+            }
+        }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_detail, menu);
+        return true;
     }
 
     @Override

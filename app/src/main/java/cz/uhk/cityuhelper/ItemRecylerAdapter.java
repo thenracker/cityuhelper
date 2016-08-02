@@ -152,9 +152,9 @@ public class ItemRecylerAdapter extends RecyclerView.Adapter<ItemRecylerAdapter.
             }else if (feedItem.getType() == Item.Type.PRINT){
                 imgItemIcon.setImageDrawable(ContextCompat.getDrawable(mContext,R.drawable.ic_local_printshop_black_48dp));
             }else if (feedItem.getType() == Item.Type.QUESTION){
-                imgItemIcon.setImageDrawable(ContextCompat.getDrawable(mContext,R.drawable.ic_notifications_active_black_48dp));
-            }else if (feedItem.getType() == Item.Type.NEED){
                 imgItemIcon.setImageDrawable(ContextCompat.getDrawable(mContext,R.drawable.ic_help_black_48dp));
+            }else if (feedItem.getType() == Item.Type.NEED){
+                imgItemIcon.setImageDrawable(ContextCompat.getDrawable(mContext,R.drawable.ic_notifications_active_black_48dp));
             }
         }
 
